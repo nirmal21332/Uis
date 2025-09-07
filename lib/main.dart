@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_practicing/UI%202/veg_commerce.dart';
-
-import 'Ui 1/Home Screen.dart';
+import 'pages/Home_Screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,10 +15,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: false
+        brightness: Brightness.dark,
+          useMaterial3: false
       ),
-      home:VegHomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
