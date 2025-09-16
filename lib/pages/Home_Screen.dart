@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../util/emoticon_face.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:ui_practicing/util/baners_dart.dart';
+import 'package:ui_practicing/util/doctor_list.dart';
+import 'package:ui_practicing/util/row_icon.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,411 +10,163 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[800],
+      
       bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag), label: 'Shop'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
-        ],
-      ),
+        currentIndex: 0,
+          unselectedItemColor: Colors.grey[500],
+          selectedItemColor: Color(0xff5a73d8),
+          items: [
+        BottomNavigationBarItem(icon:Icon(Icons.home,size: 30,),label: ''),
+        BottomNavigationBarItem(icon:Icon(Icons.calendar_month_outlined,size: 30),label: ''),
+        BottomNavigationBarItem(icon:Icon(Icons.message,size: 30),label: ''),
+        BottomNavigationBarItem(icon:Icon(Icons.person,size: 30),label: ''),
+
+
+      ]),
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Column(
-                children: [
-                  // greeting row
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Hi jared
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Hi,Jared! ',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                            ),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            '23 Jan,2021',
-                            style: TextStyle(color: Colors.blue[200]),
-                          ),
-                        ],
-                      ),
-
-                      // Notification
-                      Container(
-                        padding: EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Colors.blue[600],
-                        ),
-                        child: Icon(Icons.notifications, color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-
-                  // search bar
-                  Container(
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.blue[600],
-                    ),
-                    child: Row(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Upper Section
+              Padding(
+                padding: const EdgeInsets.only(top: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // hi jane
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(Icons.search, color: Colors.white),
-                        SizedBox(width: 5),
-                        Text('Search', style: TextStyle(color: Colors.white)),
+                        Text(
+                          'Hi, Jane',
+                          style: GoogleFonts.poppins(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 0),
+                        Text(
+                          'How are yo feeling today',
+                          style: GoogleFonts.poppins(fontSize: 12),
+                        ),
                       ],
                     ),
-                  ),
-                  SizedBox(height: 25),
-
-                  // how do you feel?
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'How do you feel?',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Icon(Icons.more_horiz, color: Colors.white),
-                    ],
-                  ),
-                  SizedBox(height: 25),
-
-                  // 4 different faces
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      // bad
-                      Column(
-                        children: [
-                          EmoticonFace(emoticonFace: '😀'),
-                          SizedBox(height: 8),
-                          Text('Bad', style: TextStyle(color: Colors.white)),
-                        ],
-                      ),
-                      // fine
-                      Column(
-                        children: [
-                          EmoticonFace(emoticonFace: '😊'),
-                          SizedBox(height: 8),
-                          Text('Fine', style: TextStyle(color: Colors.white)),
-                        ],
-                      ),
-                      // well
-                      Column(
-                        children: [
-                          EmoticonFace(emoticonFace: '🙂'),
-                          SizedBox(height: 8),
-                          Text('Well', style: TextStyle(color: Colors.white)),
-                        ],
-                      ),
-                      // excellent
-                      Column(
-                        children: [
-                          EmoticonFace(emoticonFace: '😁'),
-                          SizedBox(height: 8),
-                          Text(
-                            'Excellent',
-                            style: TextStyle(color: Colors.white),
+                    Row(
+                      children: [
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            minimumSize: Size(50, 50), // 🔹 exact button size
+                            padding: EdgeInsets.zero, // 🔹 extra space remove
+                            side: BorderSide(
+                              color: Colors.grey.shade300,
+                              width: 1.5,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
                           ),
-                        ],
-                      ),
+                          onPressed: () {},
+                          child: Icon(
+                            Icons.notifications_none_sharp,
+                            color: Colors.black,
+                            size: 25, // 🔹 icon छोटा कर दिया
+                          ),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.03,
+                        ),
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            minimumSize: Size(50, 50), // 🔹 exact button size
+                            padding: EdgeInsets.zero, // 🔹 extra space remove
+                            side: BorderSide(
+                              color: Colors.grey.shade300,
+                              width: 1.5,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: Icon(
+                            Icons.search_outlined,
+                            color: Colors.black,
+                            size: 25, // 🔹 icon छोटा कर दिया
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Baner(),
+              SizedBox(height: 20),
+              Text(
+                'Health Needs',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      RowIcon(docIcons: 'assets/images/appointment.png',),
+                      SizedBox(height:15),
+                      Text('Appoitment',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.w500,fontSize:13),),
                     ],
                   ),
+                  Column(
+                    children: [
+                      RowIcon(docIcons: 'assets/images/hospital.png',),
+                      SizedBox(height: 15),
+                      Text('Hospital',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.w500,fontSize:13),),
+
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      RowIcon(docIcons: 'assets/images/coronavirus.png',),
+                      SizedBox(height: 15),
+                      Text('Covid-19',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.w500,fontSize:13)),
+
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      RowIcon(docIcons: 'assets/images/more.png',),
+                      SizedBox(height: 15),
+                      Text('More',style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.w500,fontSize:13)),
+
+                    ],
+                  ),
+
                 ],
               ),
-            ),
-            SizedBox(height: 25),
-            Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
-                ),
-                child: Container(
-                  color: Colors.grey[200],
-                  padding: EdgeInsets.all(25),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Exercises',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                            Icon(Icons.more_horiz),
-                          ],
-                        ),
-                        SizedBox(height: 20),
+              SizedBox(height: 25),
+              Text(
+                'Nearby Doctor',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      DoctorList(title: 'dr. Skylar Korsgaard', ratingText: '4.2', reviews: '(121 Reviews)',),
+                      DoctorList(title: 'dr. dr.Rieson Schler', ratingText: '5.0', reviews: '(209 Reviews)',),
+                      DoctorList(title: 'dr. Adison Schleifer', ratingText: '4.2', reviews: '(122 Reviews)',),
 
-                        // listview of exercises
-                        Card(
-                          elevation: 0.5,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Container(
-                            padding: EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      padding: EdgeInsets.all(16),
-                                      child: Icon(
-                                        Icons.favorite,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    SizedBox(width: 12),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        // title
-                                        Text(
-                                          'Speaking skills',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        SizedBox(height: 5),
-                                        // subtitle
-                                        Text(
-                                          '16 Exercises',
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Icon(Icons.more_horiz),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          elevation: 0.5,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Container(
-                            padding: EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      padding: EdgeInsets.all(16),
-                                      child: Icon(
-                                        Icons.favorite,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    SizedBox(width: 12),
-                                    Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        // title
-                                        Text(
-                                          'Learning skills',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        SizedBox(height: 5),
-                                        // subtitle
-                                        Text(
-                                          '32 Exercises',
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Icon(Icons.more_horiz),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          elevation: 0.5,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Container(
-                            padding: EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.orange,
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      padding: EdgeInsets.all(16),
-                                      child: Icon(
-                                        Icons.favorite,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    SizedBox(width: 12),
-                                    Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        // title
-                                        Text(
-                                          'Watching skills',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        SizedBox(height: 5),
-                                        // subtitle
-                                        Text(
-                                          '18 Exercises',
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Icon(Icons.more_horiz),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          elevation: 0.5,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Container(
-                            padding: EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      padding: EdgeInsets.all(16),
-                                      child: Icon(
-                                        Icons.favorite,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    SizedBox(width: 12),
-                                    Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        // title
-                                        Text(
-                                          'Typing skills',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        SizedBox(height: 5),
-                                        // subtitle
-                                        Text(
-                                          '20 Exercises',
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Icon(Icons.more_horiz),
-                              ],
-                            ),
-                          ),
-                        ),
-
-
-                      ],
-                    ),
+                    ],
                   ),
                 ),
-              ),
-            ),
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
