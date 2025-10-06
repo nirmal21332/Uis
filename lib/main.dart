@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ui_practicing/pages/welcome_page.dart';
+import 'package:ui_practicing/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,11 +16,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color(0xff794afe),
         useMaterial3: false,
-        textTheme: GoogleFonts.mulishTextTheme(Theme.of(context).textTheme),
       ),
-      home: WelcomeScreen(),
+      home: HomePage(),
     );
   }
 }

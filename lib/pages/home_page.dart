@@ -1,11 +1,10 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:ui_practicing/utils/custom_icon%20widgetss.dart';
-import 'package:ui_practicing/utils/location_card.dart';
-import 'package:ui_practicing/utils/nearby_places.dart';
-import 'package:ui_practicing/utils/recommendation_places.dart';
-import 'package:ui_practicing/utils/tourist_places.dart';
+import 'package:ui_practicing/utils/bottom_container.dart';
+import 'package:ui_practicing/utils/icon_row.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,99 +12,69 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff151617),
+      bottomNavigationBar: BottomNavigationBar(
+        
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(IconlyLight.more_square),
+            label: '',
+          ),
+          BottomNavigationBarItem(icon: Icon(IconlyLight.heart), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.add), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.add), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.add), label: ''),
+        ],
+      ),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        foregroundColor: Colors.black,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Good Morning'),
-            Text(
-              'Tetteh Jeron Asiedu',
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
-          ],
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(IconlyLight.search, size: 30),
+        ),
+        centerTitle: true,
+        title: ActionChip(
+          padding: EdgeInsets.only(top: 15, bottom: 15, left: 20, right: 20),
+          onPressed: () {},
+          shape: StadiumBorder(),
+          backgroundColor: Colors.grey.shade900,
+          label: Text(
+            'New Jersey',
+            style: TextStyle(fontSize: 18, color: Colors.white),
+          ),
+          avatar: Icon(Ionicons.location, size: 20),
         ),
         actions: [
-          CustomIconButton(icon: Ionicons.search_outline),
-          CustomIconButton(icon: Ionicons.notifications_outline),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.black54,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.home_outline),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.bookmark_outline),
-            label: 'Bookmark',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.ticket_outline),
-            label: 'Ticket',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.person_outline),
-            label: 'Profile',
+          IconButton(
+            onPressed: () {},
+            icon: Badge(
+              backgroundColor: Theme.of(context).primaryColor,
+              alignment: Alignment(1, -1.5),
+              smallSize: 8,
+              child: Icon(Ionicons.notifications_outline, size: 30),
+            ),
           ),
         ],
       ),
       body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 10),
         children: [
-          // Location Card
-          LocationCard(),
-          SizedBox(height: 15),
-
-          // Categories
-          TouristPlaces(),
-          SizedBox(height: 10),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Recommendation',
-                style: GoogleFonts.mulish(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+            child: AutoSizeText(
+              'Find the best to rent',
+              maxLines: 1,
+              minFontSize: 10,
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.raleway(
+                color: Colors.white.withOpacity(0.9),
+                fontSize: 30,
+                fontWeight: FontWeight.w500,
               ),
-              TextButton(onPressed: () {}, child: Text('View All')),
-            ],
+            ),
           ),
-
-          SizedBox(height: 10),
-          // Recommendation places
-          RecommendationPlaces(),
-          SizedBox(height: 10),
-
-          // Nearby Places
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Nearby From You',
-                style: GoogleFonts.mulish(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              TextButton(onPressed: () {}, child: Text('View All')),
-            ],
-          ),
-
-          SizedBox(height: 10),
-
-          NearbyPlaces()
-
+          IconRow(),
+          BottomContainer(),
         ],
       ),
     );
