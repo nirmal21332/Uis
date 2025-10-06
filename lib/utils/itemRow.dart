@@ -28,14 +28,14 @@ class ItemRow extends StatelessWidget {
                     height: 120,
                     decoration: BoxDecoration(
                       color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(20),
                     ),
                     child: Stack(
                       children: [
                         Center(
                           child: Image.asset(
                             'assets/items/kettle.png',
-                            height: 100,
+                            height: 80,
                             fit: BoxFit.contain,
                           ),
                         ),
@@ -44,21 +44,32 @@ class ItemRow extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              ElevatedButton.icon(
-                                style: ElevatedButton.styleFrom(
-                                  shape: CircleBorder(),
-                                  backgroundColor: Colors.deepPurple.shade100
-                                ),
-                                onPressed: () {},
-                                label: Text(''),
-                                icon: Center(child: Padding(
-                                  padding: const EdgeInsets.only(left:9.5),
-                                  child: Icon(Ionicons.heart,size: 20,color: Colors.black,),
-                                )),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right:15.0,top: 10),
+                                    child: Icon(Icons.heart_broken,size: 20),
+                                  )
+                                ],
                               ),
-                              ListTile(
-                                title: Text('4.9',textAlign: TextAlign.right,style: TextStyle(fontWeight: FontWeight.w600),),
-                              )
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20.0,bottom:10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Icon(Icons.star,color: Colors.orange,size:18,),
+                                    Text(
+                                      '4.9',
+                                      textAlign: TextAlign.right,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ),

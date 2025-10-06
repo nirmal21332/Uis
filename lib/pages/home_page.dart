@@ -12,18 +12,26 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton:FloatingActionButton(onPressed: (){},
+        foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15)
+        ),
+        backgroundColor: Color(0xff754bf8),
+      child: Icon(Icons.add),
+      ),
       backgroundColor: Color(0xff151617),
       bottomNavigationBar: BottomNavigationBar(
-        
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: false,
+        selectedItemColor: Color(0xff754bf8),
+        iconSize: 25,
         items: [
-          BottomNavigationBarItem(
-            icon: Icon(IconlyLight.more_square),
-            label: '',
-          ),
+          BottomNavigationBarItem(icon: Icon(IconlyLight.category), label: ''),
           BottomNavigationBarItem(icon: Icon(IconlyLight.heart), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: ''),
+          BottomNavigationBarItem(icon: Icon(IconlyLight.chat), label: ''),
+          BottomNavigationBarItem(icon: Icon(IconlyLight.profile), label: ''),
         ],
       ),
       appBar: AppBar(
