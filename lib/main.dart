@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_practicing/pages/home_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,15 +12,19 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) => ScreenUtilInit(
+    designSize: const Size(360, 640), // example base size
+    builder: (context, child) => MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Color(0xff794afe),
+        primaryColor: const Color(0xfff2f2f2),
         useMaterial3: false,
+        textTheme: GoogleFonts.nunitoTextTheme(
+          Theme.of(context).textTheme,
+        ), // optional
       ),
       home: HomePage(),
-    );
-  }
+    ),
+  );
 }
