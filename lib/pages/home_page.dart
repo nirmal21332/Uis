@@ -1,8 +1,10 @@
-import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ui_practicing/utils/burger_list.dart';
+import 'package:ui_practicing/utils/hotel_list.dart';
+import 'package:ui_practicing/utils/search_button.dart';
+
+import '../utils/Info_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,191 +12,120 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomAppBar(
-        height: 220.h,
-        color: Colors.transparent,
-        elevation: 0,
-        padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 15.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Payment Method',
+      bottomNavigationBar: SizedBox(
+        height: 100.h,
+        child: BottomNavigationBar(
+          selectedLabelStyle: TextStyle(color: Colors.grey),
+          unselectedLabelStyle: TextStyle(color: Colors.black),
+          unselectedItemColor: Colors.black,
+          selectedItemColor: Colors.black,
+          items: [
+            BottomNavigationBarItem(
+              icon: CircleAvatar(
+                backgroundColor: Colors.black,
+                child: Text(
+                  'HIPE',
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 19.sp,
+                    fontSize: 12.sp,
                     fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
-                ),
-                Text(
-                  'Change',
-                  style: TextStyle(
-                    color: Colors.orange,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              width: 100.w,
-              height: 10.h,
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(12),
-                  topLeft: Radius.circular(12),
                 ),
               ),
+              label: '',
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Order Amount',
-                  style: TextStyle(color: Colors.grey, fontSize: 18.sp),
-                ),
-                Text(
-                  '\$120.00',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search, color: Colors.black),
+              label: 'Book',
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Tax',
-                  style: TextStyle(color: Colors.grey, fontSize: 18.sp),
-                ),
-                Text(
-                  '\$5',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            BottomNavigationBarItem(
+              icon: Icon(Icons.tips_and_updates_outlined, color: Colors.black),
+              label: 'Tips',
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Discount',
-                  style: TextStyle(color: Colors.grey, fontSize: 18.sp),
-                ),
-                Text(
-                  '\$0',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_outline, color: Colors.black),
+              label: 'Book',
             ),
-            DottedLine(
-              direction: Axis.horizontal,
-              dashLength: 4.w,
-              dashGapLength: 4.w,
-              lineThickness: 2.h,
-              dashColor: Colors.grey.shade400,
-              dashGapColor: Colors.transparent,
+            BottomNavigationBarItem(
+              icon: Icon(Icons.message_outlined, color: Colors.black),
+              label: 'Book',
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Total Payment',
-                  style: TextStyle(color: Colors.black, fontSize: 18.sp),
-                ),
-                Text(
-                  '\$125.00',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-             Center(
-               child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(MediaQuery.of(context).size.width*0.9,40),
-                    backgroundColor: Colors.orange,
-                    shape: StadiumBorder(),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    'Process to Payment',
-                    style: TextStyle(fontWeight: FontWeight.bold,fontSize:20.sp),
-                  ),
-                ),
-             ),
           ],
         ),
       ),
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back_ios, color: Colors.black),
-        backgroundColor: Colors.transparent,
+        leading: Icon(Icons.tune, color: Colors.black),
         elevation: 0,
+        backgroundColor: Colors.transparent,
         centerTitle: true,
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 10.w),
+            child: Chip(
+              backgroundColor: Colors.white,
+              avatar: Icon(Icons.sunny, color: Colors.black),
+              label: Text(
+                '25°',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ],
         title: Text(
-          'Checkout',
-          style: GoogleFonts.poppins(
-            color: Colors.black,
-            fontSize: 18.sp,
+          'HIPE',
+          style: TextStyle(
             fontWeight: FontWeight.bold,
+            color: Colors.black,
+            fontSize: 16,
           ),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.0.w),
-        child: ListView(
-          children: [
-            BurgerList(image: 'assets/b1.webp', title: 'Chicken Burger'),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0.h),
-              child: DottedLine(
-                direction: Axis.horizontal,
-                dashLength: 4.w,
-                dashGapLength: 4.w,
-                lineThickness: 2.h,
-                dashColor: Colors.grey.shade400,
-                dashGapColor: Colors.transparent,
+
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: ListView(
+            scrollDirection: Axis.vertical,
+            children: [
+              Text(
+                'welcome Dar',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 15.sp,
+                ),
               ),
-            ),
-            BurgerList(image: 'assets/b2.jpg', title: 'Humber Cheese\nBurger'),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0.h),
-              child: DottedLine(
-                direction: Axis.horizontal,
-                dashLength: 4.w,
-                dashGapLength: 4.w,
-                lineThickness: 2.h,
-                dashColor: Colors.grey.shade400,
-                dashGapColor: Colors.transparent,
+              SizedBox(height: 8.h),
+              Text(
+                'Book Your Next Stay',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.sp,
+                ),
               ),
-            ),
-            BurgerList(image: 'assets/b3.jpeg', title: 'Italian Pizza'),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0.h),
-              child: DottedLine(
-                direction: Axis.horizontal,
-                dashLength: 4.w,
-                dashGapLength: 4.w,
-                lineThickness: 2.h,
-                dashColor: Colors.grey.shade400,
-                dashGapColor: Colors.transparent,
+
+              SizedBox(height: 10.h),
+
+              InfoCard(),
+              SizedBox(height: 20.h),
+              SearchButton(),
+
+              SizedBox(height: 8.h),
+              Text(
+                'Recent Searches',
+                style: GoogleFonts.poppins(
+                  fontSize: 23.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
-            ),
-            BurgerList(image: 'assets/b1.webp', title: 'Chinese Pizza'),
-          ],
+              SizedBox(height: 8.h),
+HotelList(),
+            ],
+          ),
         ),
       ),
     );
